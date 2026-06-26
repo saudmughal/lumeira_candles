@@ -1,0 +1,13 @@
+---
+interface Props { title:string; subtitle?:string; }
+const {title, subtitle=""}=Astro.props;
+---
+<div class="section-heading">
+<p class="eyebrow">{subtitle}</p>
+<h2>{title}</h2>
+</div>
+<style>
+.section-heading{text-align:center;margin-bottom:3rem}
+.eyebrow{color:#C9A46C;text-transform:uppercase;letter-spacing:3px;font-size:.85rem}
+h2{font-size:3rem}
+</style>

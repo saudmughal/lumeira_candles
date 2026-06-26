@@ -1,0 +1,132 @@
+---
+import { withBase } from "../lib/url";
+
+const home = withBase("/");
+---
+<nav>
+  <div class="container nav">
+    <a href={home} class="logo">LUMEIRA</a>
+
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="links" id="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#bundles">Gift Bundles</a>
+      <a href="#custom">Custom Orders</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav{
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 2px 15px rgba(0,0,0,.05);
+  }
+
+  .nav{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+  }
+
+  .logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:2rem;
+    text-decoration:none;
+    color:#222;
+    letter-spacing:3px;
+  }
+
+  .links{
+    display:flex;
+    gap:30px;
+  }
+
+  .links a{
+    text-decoration:none;
+    color:#444;
+    font-weight:500;
+    transition:.3s;
+  }
+
+  .links a:hover{
+    color:var(--primary);
+  }
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:space-between;
+    width:26px;
+    height:18px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+  }
+
+  .menu-toggle .bar{
+    display:block;
+    height:2px;
+    width:100%;
+    background:#222;
+    border-radius:2px;
+    transition:.3s;
+  }
+
+  @media(max-width:768px){
+    .menu-toggle{
+      display:flex;
+    }
+
+    .links{
+      position:absolute;
+      top:calc(100% + 1px);
+      left:0;
+      right:0;
+      flex-direction:column;
+      gap:0;
+      background:#fff;
+      box-shadow:0 12px 24px rgba(0,0,0,.06);
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .3s ease;
+    }
+
+    .links.open{
+      max-height:320px;
+    }
+
+    .links a{
+      padding:16px 4px;
+      border-bottom:1px solid #f0eee9;
+    }
+  }
+</style>
+
+<script is:inline>
+  const toggle = document.querySelector(".menu-toggle");
+  const links = document.getElementById("nav-links");
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      const open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    links.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      })
+    );
+  }
+</script>

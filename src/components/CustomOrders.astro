@@ -1,0 +1,24 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { whatsappLink } from "../data/site";
+
+const cta = whatsappLink("Hi! I'd love to discuss a custom candle order.");
+---
+
+<section id="custom" class="container custom">
+  <SectionHeading subtitle="Made For You" title="Custom Orders" />
+  <p>
+    Looking for a personalised candle, bouquet or gift set? We'd love to create
+    something unique for your special occasion.
+  </p>
+  <a class="btn" href={cta} target="_blank" rel="noopener">Message Us on WhatsApp</a>
+</section>
+
+<style>
+  .custom{text-align:center}
+  .custom p{
+    max-width:600px;
+    margin:-1rem auto 2rem;
+    color:var(--muted);
+  }
+</style>

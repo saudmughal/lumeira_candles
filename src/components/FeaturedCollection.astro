@@ -1,0 +1,14 @@
+---
+import products from "../data/products";
+import ProductCard from "./ProductCard.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const featured = products.filter((p) => p.featured);
+---
+
+<section class="container">
+  <SectionHeading subtitle="Handpicked" title="Featured Collection" />
+  <div class="product-grid">
+    {featured.map((product) => <ProductCard product={product} />)}
+  </div>
+</section>

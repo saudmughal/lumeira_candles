@@ -1,0 +1,6 @@
+---
+// v2 — Not used in Lumeira Catalog v1. Reserved for a future version.
+const cats=["All","Signature","Bouquets","Decorative","Dining","Gift Bundles"];
+---
+<div class='filters'>{cats.map(c=><button>{c}</button>)}</div>
+<style>.filters{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin:2rem 0}.filters button{padding:.7rem 1.2rem;border-radius:999px;border:1px solid #ddd;background:#fff;cursor:pointer}.filters button:hover{background:#C9A46C;color:#fff}</style>

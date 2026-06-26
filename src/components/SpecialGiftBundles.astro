@@ -1,0 +1,24 @@
+---
+import products from "../data/products";
+import ProductCard from "./ProductCard.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const bundles = products.filter((p) => p.category === "Gift Bundles");
+---
+
+<section id="bundles" class="container">
+  <SectionHeading subtitle="For Every Occasion" title="Special Gift Bundles" />
+  <p class="section-intro">Create thoughtful handcrafted gifts for every occasion.</p>
+  <div class="product-grid">
+    {bundles.map((product) => <ProductCard product={product} />)}
+  </div>
+</section>
+
+<style>
+  .section-intro{
+    text-align:center;
+    color:var(--muted);
+    max-width:600px;
+    margin:-1.5rem auto 3rem;
+  }
+</style>

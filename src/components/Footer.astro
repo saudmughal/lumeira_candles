@@ -1,0 +1,72 @@
+---
+import site from "../data/site";
+---
+
+<footer id="contact">
+  <div class="container foot">
+    <div class="foot-brand">
+      <h3>Lumeira</h3>
+      <p>Handcrafted candles for gifting, décor and life's special moments.</p>
+    </div>
+
+    <nav class="foot-links" aria-label="Footer">
+      <a href="#collection">Collection</a>
+      <a href="#bundles">Gift Bundles</a>
+      <a href="#custom">Custom Orders</a>
+      <a href={site.instagram} target="_blank" rel="noopener">{site.instagramHandle}</a>
+    </nav>
+  </div>
+
+  <p class="copyright">© 2026 Lumeira Handcrafted Candles • Made with ♥</p>
+</footer>
+
+<style>
+  footer{
+    padding:4rem 0 2rem;
+    background:#222;
+    color:#fff;
+  }
+
+  .foot{
+    display:flex;
+    justify-content:space-between;
+    gap:2rem;
+    flex-wrap:wrap;
+    margin-bottom:2.5rem;
+  }
+
+  .foot-brand h3{
+    font-size:1.9rem;
+    letter-spacing:2px;
+    margin-bottom:.6rem;
+  }
+
+  .foot-brand p{
+    color:#bbb;
+    max-width:320px;
+  }
+
+  .foot-links{
+    display:flex;
+    flex-direction:column;
+    gap:.7rem;
+  }
+
+  .foot-links a{
+    color:#ddd;
+    text-decoration:none;
+    transition:.3s;
+  }
+
+  .foot-links a:hover{
+    color:var(--primary);
+  }
+
+  .copyright{
+    text-align:center;
+    color:#888;
+    border-top:1px solid #333;
+    padding-top:1.5rem;
+    font-size:.9rem;
+  }
+</style>

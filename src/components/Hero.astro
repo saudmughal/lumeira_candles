@@ -1,0 +1,77 @@
+---
+import { withBase } from "../lib/url";
+---
+<section class="hero" style={`background-image:url('${withBase("/images/hero.jpg")}')`}>
+  <div class="overlay">
+    <div class="container hero-content">
+      <p class="small">Handcrafted Candles</p>
+      <h1>Elegant Candles <br> Made With Love</h1>
+      <p>
+        Beautiful handcrafted candles for gifting, home décor and life's special
+        moments.
+      </p>
+      <a href="#collection" class="btn">Browse Collection</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero{
+    height:88vh;
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    display:flex;
+    align-items:center;
+  }
+
+  .overlay{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,.15) 0%,
+      rgba(0,0,0,.35) 60%,
+      rgba(0,0,0,.55) 100%
+    );
+  }
+
+  .hero-content{
+    color:white;
+    animation:hero-fade 1s ease both;
+  }
+
+  @keyframes hero-fade{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:none}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-content{animation:none}
+  }
+
+  .small{
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+
+  h1{
+    font-size:4.5rem;
+    line-height:1;
+    margin-bottom:25px;
+  }
+
+  .hero p{
+    max-width:520px;
+    margin-bottom:35px;
+  }
+
+  @media(max-width:768px){
+    h1{
+      font-size:3rem;
+    }
+  }
+</style>

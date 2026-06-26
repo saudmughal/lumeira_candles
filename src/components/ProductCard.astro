@@ -1,0 +1,287 @@
+---
+import site from "../data/site";
+import { withBase } from "../lib/url";
+
+const { product } = Astro.props;
+
+const hasBadge = product.badge && product.badge.length > 0;
+
+const enquireMessage = "Hi! I'm interested in the " + product.name + ". Could you share more details?";
+const enquireLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(enquireMessage)}`;
+---
+
+<div class="product-card">
+
+  {hasBadge && (
+    <div class="badge">
+      {product.badge}
+    </div>
+  )}
+
+  <div class="image-wrapper">
+    <img
+      src={withBase(product.image)}
+      alt={product.name}
+      loading="lazy"
+    />
+  </div>
+
+  <div class="content">
+
+    <span class="category">
+      {product.category}
+    </span>
+
+    <h3>
+      {product.name}
+    </h3>
+
+    <p class="description">
+      {product.shortDescription}
+    </p>
+
+    <div class="prices">
+
+      {
+        product.prices.map((price) => (
+          <div class="price-row">
+
+            <span>
+              {price.label}
+            </span>
+
+            <strong>
+              €{price.value}
+            </strong>
+
+          </div>
+        ))
+      }
+
+    </div>
+
+    <a class="enquire-btn" href={enquireLink} target="_blank" rel="noopener">
+      Enquire Now
+    </a>
+
+  </div>
+
+</div>
+
+<style>
+
+.product-card{
+
+position:relative;
+
+background:#fff;
+
+border-radius:22px;
+
+overflow:hidden;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+transition:.3s;
+
+display:flex;
+
+flex-direction:column;
+
+height:100%;
+
+}
+
+.product-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 25px 50px rgba(0,0,0,.12);
+
+}
+
+.image-wrapper{
+
+aspect-ratio:4 / 3;
+
+overflow:hidden;
+
+background:#f3efe9;
+
+}
+
+.image-wrapper img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:.5s;
+
+}
+
+.product-card:hover img{
+
+transform:scale(1.05);
+
+}
+
+.badge{
+
+position:absolute;
+
+top:16px;
+
+right:16px;
+
+background:#C9A46C;
+
+color:white;
+
+padding:8px 14px;
+
+border-radius:999px;
+
+font-size:.75rem;
+
+font-weight:600;
+
+letter-spacing:.5px;
+
+z-index:5;
+
+}
+
+.content{
+
+padding:24px;
+
+display:flex;
+
+flex-direction:column;
+
+flex:1;
+
+}
+
+.category{
+
+font-size:.8rem;
+
+text-transform:uppercase;
+
+letter-spacing:2px;
+
+color:#999;
+
+margin-bottom:8px;
+
+}
+
+h3{
+
+font-size:2rem;
+
+margin-bottom:10px;
+
+line-height:1.1;
+
+}
+
+.description{
+
+color:#666;
+
+font-size:.95rem;
+
+margin-bottom:22px;
+
+min-height:60px;
+
+}
+
+.prices{
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+margin-bottom:28px;
+
+}
+
+.price-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding-bottom:8px;
+
+border-bottom:1px solid #eee;
+
+}
+
+.price-row strong{
+
+font-size:1.1rem;
+
+color:#C9A46C;
+
+}
+
+.enquire-btn{
+
+margin-top:auto;
+
+display:block;
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:999px;
+
+background:#2F2F2F;
+
+color:white;
+
+cursor:pointer;
+
+font-weight:600;
+
+font-size:.95rem;
+
+text-align:center;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.enquire-btn:hover{
+
+background:#C9A46C;
+
+}
+
+@media(max-width:768px){
+
+h3{
+
+font-size:1.7rem;
+
+}
+
+}
+
+</style>

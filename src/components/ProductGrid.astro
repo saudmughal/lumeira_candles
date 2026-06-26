@@ -1,0 +1,15 @@
+---
+import products from "../data/products";
+import ProductCard from "./ProductCard.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+// Full catalog excludes Gift Bundles (they have their own dedicated section).
+const catalog = products.filter((p) => p.category !== "Gift Bundles");
+---
+
+<section id="collection" class="container">
+  <SectionHeading subtitle="Browse Everything" title="The Collection" />
+  <div class="product-grid">
+    {catalog.map((product) => <ProductCard product={product} />)}
+  </div>
+</section>

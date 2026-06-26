@@ -1,0 +1,11 @@
+Add these components to src/pages/index.astro after <Hero />:
+
+<AnnouncementBanner />
+<ProductGrid />
+<SpecialGiftBundles />
+<CustomOrders />
+<QRCodeSection />
+<About />
+<Instagram />
+<Footer />
+<FloatingWhatsApp />

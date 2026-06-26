@@ -1,0 +1,34 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import site from "../data/site";
+---
+
+<section id="instagram" class="container instagram">
+  <SectionHeading subtitle="Instagram" title="Follow Our Journey" />
+  <p>Discover our latest creations and custom orders on Instagram.</p>
+  <a class="btn-outline" href={site.instagram} target="_blank" rel="noopener">
+    {site.instagramHandle}
+  </a>
+</section>
+
+<style>
+  .instagram{text-align:center}
+  .instagram p{
+    max-width:600px;
+    margin:-1rem auto 1.5rem;
+    color:var(--muted);
+  }
+  .btn-outline{
+    display:inline-block;
+    padding:12px 26px;
+    border:1px solid var(--primary);
+    border-radius:999px;
+    color:var(--primary);
+    text-decoration:none;
+    transition:.3s;
+  }
+  .btn-outline:hover{
+    background:var(--primary);
+    color:#fff;
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+import { withBase } from "../lib/url";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Lumeira | Handcrafted Candles",
+  description = "Handcrafted scented candles, bouquets and decorative candles for gifting, home décor and life's special moments.",
+} = Astro.props;
+
+// Absolute URL (domain + base) so social previews resolve correctly.
+const ogImage = new URL(withBase("/images/hero.jpg"), Astro.site).href;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+
+  <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
+  <link rel="icon" href={withBase("/favicon.ico")} sizes="any" />
+
+  <meta name="description" content={description} />
+
+  <!-- Open Graph / social sharing (premium link previews on WhatsApp & Instagram) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+<slot />
+
+<script is:inline>
+  // Progressive scroll-reveal: if JS is disabled, sections render normally.
+  document.documentElement.classList.add("reveal-ready");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll("section").forEach((el) => io.observe(el));
+</script>
+
+</body>
+
+</html>
