@@ -1,8 +1,11 @@
 ---
 import SectionHeading from "./SectionHeading.astro";
-import { whatsappLink } from "../data/site";
+import site from "../data/site";
 
-const cta = whatsappLink("Hi! I'd love to discuss a custom candle order.");
+// WhatsApp contact kept for later; reference now points to Instagram.
+// import { whatsappLink } from "../data/site";
+// const cta = whatsappLink("Hi! I'd love to discuss a custom candle order.");
+const cta = site.instagram;
 ---
 
 <section id="custom" class="container custom">
@@ -11,7 +14,7 @@ const cta = whatsappLink("Hi! I'd love to discuss a custom candle order.");
     Looking for a personalised candle, bouquet or gift set? We'd love to create
     something unique for your special occasion.
   </p>
-  <a class="btn" href={cta} target="_blank" rel="noopener">Message Us on WhatsApp</a>
+  <a class="btn" href={cta} target="_blank" rel="noopener">Message Us on Instagram</a>
 </section>
 
 <style>

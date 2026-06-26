@@ -1,0 +1,109 @@
+---
+// Image-only lightbox. Enlarges any image marked with `data-zoomable`.
+// Single global instance; uses event delegation so it covers every product card.
+---
+
+<div class="lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+  <button class="lightbox-close" type="button" aria-label="Close enlarged image">&times;</button>
+  <img class="lightbox-img" src="" alt="" />
+</div>
+
+<style>
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:5vmin;
+    background:rgba(20,16,12,.86);
+    cursor:zoom-out;
+    opacity:0;
+    transition:opacity .25s ease;
+  }
+  .lightbox.open{ opacity:1; }
+  .lightbox[hidden]{ display:none; }
+
+  .lightbox-img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    border-radius:12px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    cursor:default;
+  }
+
+  .lightbox-close{
+    position:absolute;
+    top:18px;
+    right:24px;
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    font-size:1.9rem;
+    line-height:1;
+    cursor:pointer;
+    transition:background .25s ease;
+  }
+  .lightbox-close:hover{ background:rgba(255,255,255,.25); }
+
+  @media (prefers-reduced-motion: reduce){
+    .lightbox{ transition:none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const lb = document.getElementById("image-lightbox");
+    if (!lb) return;
+    const img = lb.querySelector(".lightbox-img");
+    const closeBtn = lb.querySelector(".lightbox-close");
+    let lastFocused = null;
+
+    function open(src, alt) {
+      if (!src) return;
+      lastFocused = document.activeElement;
+      img.src = src;
+      img.alt = alt || "";
+      lb.hidden = false;
+      requestAnimationFrame(() => lb.classList.add("open"));
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    function close() {
+      lb.classList.remove("open");
+      document.body.style.overflow = "";
+      setTimeout(() => {
+        lb.hidden = true;
+        img.src = "";
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }, 250);
+    }
+
+    document.addEventListener("click", (e) => {
+      const z = e.target.closest("[data-zoomable]");
+      if (z) open(z.currentSrc || z.src, z.alt);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      const t = e.target;
+      if ((e.key === "Enter" || e.key === " ") && t && t.matches && t.matches("[data-zoomable]")) {
+        e.preventDefault();
+        open(t.currentSrc || t.src, t.alt);
+      }
+      if (e.key === "Escape" && !lb.hidden) close();
+    });
+
+    lb.addEventListener("click", (e) => {
+      if (e.target === lb || e.target === closeBtn) close();
+    });
+  })();
+</script>

@@ -6,8 +6,10 @@ const { product } = Astro.props;
 
 const hasBadge = product.badge && product.badge.length > 0;
 
-const enquireMessage = "Hi! I'm interested in the " + product.name + ". Could you share more details?";
-const enquireLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(enquireMessage)}`;
+// WhatsApp enquiry kept for later; contact reference now points to Instagram.
+// const enquireMessage = "Hi! I'm interested in the " + product.name + ". Could you share more details?";
+// const enquireLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(enquireMessage)}`;
+const enquireLink = site.instagram;
 ---
 
 <div class="product-card">
@@ -23,6 +25,10 @@ const enquireLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(en
       src={withBase(product.image)}
       alt={product.name}
       loading="lazy"
+      data-zoomable
+      role="button"
+      tabindex="0"
+      aria-label={`Enlarge image of ${product.name}`}
     />
   </div>
 
@@ -119,6 +125,8 @@ height:100%;
 object-fit:cover;
 
 transition:.5s;
+
+cursor:zoom-in;
 
 }
 

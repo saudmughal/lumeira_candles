@@ -10,7 +10,7 @@ const products = [
     slug: "pillar-candle",
     name: "Pillar Candle",
     category: "Signature",
-    image: "/images/products/pillar.jpg",
+    image: "/images/products/pillar-candles.png",
 
     prices: [
       {
@@ -19,7 +19,11 @@ const products = [
       },
       {
         label: "Large",
-        value: 20
+        value: 22
+      },
+      {
+        label: "Bundle",
+        value: 35
       }
     ],
 
@@ -27,20 +31,20 @@ const products = [
       "Elegant handcrafted pillar candle perfect for gifting and home décor.",
 
     featured: true,
-    badge: "Best Seller"
+    badge: "Bundle"
   },
 
   {
     id: 2,
-    slug: "pillar-bundle",
-    name: "Pillar Candle Bundle",
-    category: "Gift Bundles",
-    image: "/images/products/pillar-bundle.jpg",
+    slug: "boat-candle",
+    name: "Boat Candle",
+    category: "Decorative",
+    image: "/images/products/hero.png",
 
     prices: [
       {
-        label: "Bundle",
-        value: 32
+        label: "Standard",
+        value: 35
       }
     ],
 
@@ -48,7 +52,6 @@ const products = [
       "A beautiful bundle of handcrafted pillar candles.",
 
     featured: true,
-    badge: "Bundle"
   },
 
   {
@@ -56,11 +59,11 @@ const products = [
     slug: "mini-bouquet",
     name: "Mini Bouquet",
     category: "Bouquets",
-    image: "/images/products/mini-bouquet.jpg",
+    image: "/images/products/mini-bouquet.png",
 
     prices: [
       {
-        label: "Standard",
+        label: "Single",
         value: 12
       }
     ],
@@ -76,11 +79,11 @@ const products = [
     slug: "pot-bouquet",
     name: "Reusable Pot Bouquet",
     category: "Bouquets",
-    image: "/images/products/pot-bouquet.jpg",
+    image: "/images/products/pot-bouquet.png",
 
     prices: [
       {
-        label: "Standard",
+        label: "Single",
         value: 22
       }
     ],
@@ -88,7 +91,7 @@ const products = [
     shortDescription:
       "Reusable decorative candle bouquet in an elegant pot.",
 
-    featured: true
+    featured: false
   },
 
   {
@@ -96,11 +99,11 @@ const products = [
     slug: "bouquet-box",
     name: "Bouquet Box",
     category: "Bouquets",
-    image: "/images/products/bouquet-box.jpg",
+    image: "/images/products/bouquet-box.png",
 
     prices: [
       {
-        label: "Standard",
+        label: "One Box",
         value: 22
       }
     ],
@@ -114,7 +117,7 @@ const products = [
     slug: "rainbow-candle",
     name: "Rainbow Candle",
     category: "Decorative",
-    image: "/images/rainbow-candle.png",
+    image: "/images/products/rainbow-candle.png",
 
     prices: [
       {
@@ -132,7 +135,7 @@ const products = [
     slug: "teddy-bear",
     name: "Teddy Bear Candle",
     category: "Decorative",
-    image: "/images/products/teddy.jpg",
+    image: "/images/products/teddy.png",
 
     prices: [
       {
@@ -150,7 +153,7 @@ const products = [
     slug: "bowl-candle",
     name: "Bowl Candle",
     category: "Decorative",
-    image: "/images/products/bowl.jpg",
+    image: "/images/products/bowl.png",
 
     prices: [
       {
@@ -160,7 +163,8 @@ const products = [
     ],
 
     shortDescription:
-      "Luxury bowl candle with elegant finish."
+      "Luxury bowl candle with elegant finish.",
+    featured: false
   },
 
   {
@@ -168,7 +172,7 @@ const products = [
     slug: "boat-candle",
     name: "Boat Candle",
     category: "Decorative",
-    image: "/images/products/boat.jpg",
+    image: "/images/products/hero.png",
 
     prices: [
       {
@@ -186,7 +190,7 @@ const products = [
     slug: "red-pillar-pair",
     name: "Red Pillar Candle Pair",
     category: "Signature",
-    image: "/images/products/red-pillar.jpg",
+    image: "/images/products/red-pillar.png",
 
     prices: [
       {
@@ -201,20 +205,30 @@ const products = [
 
   {
     id: 11,
-    slug: "bubble-candle",
-    name: "Bubble Candle",
+    slug: "ribbed-taper-candle",
+    name: "Ribbed Taper + Bubble Candle",
     category: "Decorative",
-    image: "/images/products/bubble.jpg",
+    image: "/images/products/scented-ribbed.png",
 
     prices: [
       {
-        label: "Standard",
+        label: "Single Ribbed Taper",
+        value: 8
+      },
+      {
+        label: "Ribbed Taper Pair",
+        value: 15
+      },
+      {
+        label: "Bubble Candle",
         value: 9
       }
     ],
 
     shortDescription:
-      "Minimalist bubble candle."
+      "Minimalist bubble candle.",
+    badge: "Bundle",
+    featured: true
   },
 
   {
@@ -222,7 +236,7 @@ const products = [
     slug: "knot-candle",
     name: "Knot Candle",
     category: "Decorative",
-    image: "/images/products/knot.jpg",
+    image: "/images/products/knot.png",
 
     prices: [
       {
@@ -240,7 +254,7 @@ const products = [
     slug: "geometric-candle",
     name: "Geometric Candle",
     category: "Decorative",
-    image: "/images/products/geometric.jpg",
+    image: "/images/products/geometric.png",
 
     prices: [
       {
@@ -250,11 +264,16 @@ const products = [
       {
         label: "Large",
         value: 35
+      },
+      {
+        label: "Bundle",
+        value: 52
       }
     ],
 
     shortDescription:
-      "Luxury geometric decorative candle."
+      "Luxury geometric decorative candle.",
+    badge: "Bundle"
   },
 
   {
@@ -263,7 +282,7 @@ const products = [
     name: "French Taper Candles",
     category: "Dining",
 
-    image: "/images/products/taper.jpg",
+    image: "/images/products/french-taper.png",
 
     prices: [
       {

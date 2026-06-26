@@ -5,8 +5,10 @@ const home = withBase("/");
 ---
 <nav>
   <div class="container nav">
+    <a href={home} class="logoimg">
+        <img src ="images/lumeira-logo.png" />
+    </a>
     <a href={home} class="logo">LUMEIRA</a>
-
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -15,7 +17,6 @@ const home = withBase("/");
 
     <div class="links" id="nav-links">
       <a href="#collection">Collection</a>
-      <a href="#bundles">Gift Bundles</a>
       <a href="#custom">Custom Orders</a>
       <a href="#contact">Contact</a>
     </div>
@@ -24,10 +25,11 @@ const home = withBase("/");
 
 <style>
   nav{
-    background:white;
+    background:var(--surface);
     position:sticky;
     top:0;
     z-index:999;
+    border-bottom:1px solid rgba(201,164,108,.18);
     box-shadow:0 2px 15px rgba(0,0,0,.05);
   }
 
@@ -36,7 +38,7 @@ const home = withBase("/");
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 0;
+    padding:12px 0;
   }
 
   .logo{
@@ -45,6 +47,17 @@ const home = withBase("/");
     text-decoration:none;
     color:#222;
     letter-spacing:3px;
+  }
+
+  .logoimg{
+    display: block;
+    line-height: 0;
+  }
+
+  .logoimg img{
+    height: 60px;
+    width: auto;
+    display: block;
   }
 
   .links{
@@ -89,6 +102,10 @@ const home = withBase("/");
       display:flex;
     }
 
+    .logoimg img{
+      height:48px;
+    }
+
     .links{
       position:absolute;
       top:calc(100% + 1px);
@@ -96,7 +113,7 @@ const home = withBase("/");
       right:0;
       flex-direction:column;
       gap:0;
-      background:#fff;
+      background:var(--surface);
       box-shadow:0 12px 24px rgba(0,0,0,.06);
       max-height:0;
       overflow:hidden;

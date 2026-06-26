@@ -1,17 +1,22 @@
 ---
 import site from "../data/site";
+import { withBase } from "../lib/url";
 ---
 
 <footer id="contact">
   <div class="container foot">
     <div class="foot-brand">
-      <h3>Lumeira</h3>
+      <img
+        class="foot-logo"
+        src={withBase("/images/lumeira-logo.png")}
+        alt="Lumeira Handcrafted Candles"
+        loading="lazy"
+      />
       <p>Handcrafted candles for gifting, décor and life's special moments.</p>
     </div>
 
     <nav class="foot-links" aria-label="Footer">
       <a href="#collection">Collection</a>
-      <a href="#bundles">Gift Bundles</a>
       <a href="#custom">Custom Orders</a>
       <a href={site.instagram} target="_blank" rel="noopener">{site.instagramHandle}</a>
     </nav>
@@ -35,10 +40,12 @@ import site from "../data/site";
     margin-bottom:2.5rem;
   }
 
-  .foot-brand h3{
-    font-size:1.9rem;
-    letter-spacing:2px;
-    margin-bottom:.6rem;
+  .foot-logo{
+    display:block;
+    height:96px;
+    width:auto;
+    border-radius:14px;
+    margin-bottom:1rem;
   }
 
   .foot-brand p{
