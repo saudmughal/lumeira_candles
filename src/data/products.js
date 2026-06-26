@@ -114,7 +114,7 @@ const products = [
     slug: "rainbow-candle",
     name: "Rainbow Candle",
     category: "Decorative",
-    image: "/images/products/rainbow.jpg",
+    image: "/images/rainbow-candle.png",
 
     prices: [
       {
