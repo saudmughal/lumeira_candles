@@ -23,8 +23,8 @@ const ogImage = new URL(withBase("/images/hero.jpg"), Astro.site).href;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
 
-  <link rel="icon" type="image/png" href={withBase("/images/lumeira-logo.png")} />
-  <link rel="apple-touch-icon" href={withBase("/images/lumeira-logo.png")} />
+  <link rel="icon" type="image/png" href={withBase("/images/lumeira-mark.png")} />
+  <link rel="apple-touch-icon" href={withBase("/images/lumeira-mark.png")} />
 
   <meta name="description" content={description} />
 
@@ -61,7 +61,7 @@ const ogImage = new URL(withBase("/images/hero.jpg"), Astro.site).href;
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
   document.querySelectorAll("section").forEach((el) => io.observe(el));
 </script>
 
