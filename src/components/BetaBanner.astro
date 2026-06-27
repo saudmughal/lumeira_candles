@@ -1,0 +1,82 @@
+---
+// Slim beta notice shown above the navbar. Sets expectations that this is an
+// early version. Dismissible (choice remembered); renders fine without JS.
+---
+
+<div class="beta-banner" id="beta-banner" role="note">
+  <p>
+    ✨ Lumeira is in <strong>beta</strong> — you're getting an early look while we
+    polish the final details.
+  </p>
+  <button class="beta-dismiss" type="button" aria-label="Dismiss beta notice">&times;</button>
+</div>
+
+<style>
+  .beta-banner{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:9px 44px;
+    background:#2F2F2F;
+    color:#fff;
+    text-align:center;
+    font-size:.82rem;
+    letter-spacing:.3px;
+  }
+
+  .beta-banner p{ margin:0; }
+
+  .beta-banner strong{
+    color:var(--primary);
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+
+  .beta-dismiss{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    width:26px;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    border-radius:50%;
+    background:transparent;
+    color:#bbb;
+    font-size:1.25rem;
+    line-height:1;
+    cursor:pointer;
+    transition:color .2s ease, background .2s ease;
+  }
+  .beta-dismiss:hover{ color:#fff; background:rgba(255,255,255,.12); }
+
+  @media(max-width:768px){
+    .beta-banner{ font-size:.74rem; padding:8px 40px; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const banner = document.getElementById("beta-banner");
+    if (!banner) return;
+    try {
+      if (localStorage.getItem("lumeira-beta-dismissed") === "1") {
+        banner.remove();
+        return;
+      }
+    } catch (e) {}
+    const btn = banner.querySelector(".beta-dismiss");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        banner.remove();
+        try { localStorage.setItem("lumeira-beta-dismissed", "1"); } catch (e) {}
+      });
+    }
+  })();
+</script>

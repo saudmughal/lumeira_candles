@@ -71,7 +71,8 @@ const products = [
     shortDescription:
       "A charming floral-inspired candle bouquet.",
 
-    featured: false
+    featured: false,
+    imagePosition: "center"
   },
 
   {
@@ -169,24 +170,6 @@ const products = [
 
   {
     id: 9,
-    slug: "boat-candle",
-    name: "Boat Candle",
-    category: "Decorative",
-    image: "/images/products/hero.png",
-
-    prices: [
-      {
-        label: "Standard",
-        value: 35
-      }
-    ],
-
-    shortDescription:
-      "Premium handcrafted boat candle."
-  },
-
-  {
-    id: 10,
     slug: "red-pillar-pair",
     name: "Red Pillar Candle Pair",
     category: "Signature",
@@ -200,11 +183,12 @@ const products = [
     ],
 
     shortDescription:
-      "Decorative pair of handcrafted red pillar candles."
+      "Decorative pair of handcrafted red pillar candles.",
+    imagePosition: "50% 20%"
   },
 
   {
-    id: 11,
+    id: 10,
     slug: "ribbed-taper-candle",
     name: "Ribbed Taper + Bubble Candle",
     category: "Decorative",
@@ -228,11 +212,12 @@ const products = [
     shortDescription:
       "Minimalist bubble candle.",
     badge: "Bundle",
-    featured: true
+    featured: true,
+    imagePosition:"top"
   },
 
   {
-    id: 12,
+    id: 11,
     slug: "knot-candle",
     name: "Knot Candle",
     category: "Decorative",
@@ -250,7 +235,7 @@ const products = [
   },
 
   {
-    id: 13,
+    id: 12,
     slug: "geometric-candle",
     name: "Geometric Candle",
     category: "Decorative",
@@ -277,7 +262,7 @@ const products = [
   },
 
   {
-    id: 14,
+    id: 13,
     slug: "french-taper",
     name: "French Taper Candles",
     category: "Dining",
@@ -292,7 +277,32 @@ const products = [
     ],
 
     shortDescription:
-      "Elegant French taper candles."
+      "Elegant French taper candles.",
+    imagePosition: "20% 5%"
+  },
+
+  {
+    id: 14,
+    slug: "small-rose",
+    name: "Small Rose Candles",
+    category: "Dining",
+
+    image: "/images/products/small-roses.png",
+
+    prices: [
+      {
+        label: "Single",
+        value: 7
+      },
+       {
+        label: "Pair",
+        value: 13
+      }
+    ],
+
+    shortDescription:
+      "Luxuxy Small Rose candles.",
+    imagePosition: "bottom"
   }
 ];
 

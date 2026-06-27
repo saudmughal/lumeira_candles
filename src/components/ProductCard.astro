@@ -10,6 +10,12 @@ const hasBadge = product.badge && product.badge.length > 0;
 // const enquireMessage = "Hi! I'm interested in the " + product.name + ". Could you share more details?";
 // const enquireLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(enquireMessage)}`;
 const enquireLink = site.instagram;
+const orderNowLink = "https://docs.google.com/forms/d/e/1FAIpQLSe-Cn6l8ntsumC6LPdek-n2_3XnO-UZ8tu1f7YTg2Q95hjjxw/viewform"
+
+// Which part of the image stays visible inside the cropped 4:3 thumbnail.
+// Optional per product; defaults to centre. Accepts any CSS object-position
+// value, e.g. "top", "center", "left bottom", or percentages like "50% 25%".
+const imagePosition = product.imagePosition || "center";
 ---
 
 <div class="product-card">
@@ -25,6 +31,7 @@ const enquireLink = site.instagram;
       src={withBase(product.image)}
       alt={product.name}
       loading="lazy"
+      style={`object-position:${imagePosition}`}
       data-zoomable
       role="button"
       tabindex="0"
@@ -66,9 +73,14 @@ const enquireLink = site.instagram;
 
     </div>
 
-    <a class="enquire-btn" href={enquireLink} target="_blank" rel="noopener">
-      Enquire Now
-    </a>
+    <div class="actions">
+      <a class="enquire-btn" href={enquireLink} target="_blank" rel="noopener">
+        Enquire Now
+      </a>
+      <a class="ordernow-btn" href={orderNowLink} target="_blank" rel="noopener">
+        Order Now
+      </a>
+    </div>
 
   </div>
 
@@ -244,15 +256,23 @@ color:#C9A46C;
 
 }
 
-.enquire-btn{
+.actions{
 
 margin-top:auto;
 
+display:flex;
+
+gap:12px;
+
+}
+
+.enquire-btn{
+
+flex:1;
+
 display:block;
 
-width:100%;
-
-padding:15px;
+padding:15px 12px;
 
 border:none;
 
@@ -266,11 +286,13 @@ cursor:pointer;
 
 font-weight:600;
 
-font-size:.95rem;
+font-size:.92rem;
 
 text-align:center;
 
 text-decoration:none;
+
+white-space:nowrap;
 
 transition:.3s;
 
@@ -279,6 +301,45 @@ transition:.3s;
 .enquire-btn:hover{
 
 background:#C9A46C;
+
+}
+
+
+.ordernow-btn{
+
+flex:1;
+
+display:block;
+
+padding:15px 12px;
+
+border:none;
+
+border-radius:999px;
+
+background:#C9A46C;
+
+color:white;
+
+cursor:pointer;
+
+font-weight:600;
+
+font-size:.92rem;
+
+text-align:center;
+
+text-decoration:none;
+
+white-space:nowrap;
+
+transition:.3s;
+
+}
+
+.ordernow-btn:hover{
+
+background:#2F2F2F;
 
 }
 
